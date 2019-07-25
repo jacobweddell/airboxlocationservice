@@ -24,12 +24,12 @@ namespace AirboxInterview.LocationService.Repositories
             return await _dbSet.Where(ul => ul.UserId == userId).ToListAsync();
         }
 
-        public async Task<UserLocation> GetLatestUserLocationByUserId(int userId)
+        public async Task<UserLocation> GetCurrentUserLocationByUserId(int userId)
         {
             return await _dbSet.OrderByDescending(ul => ul.TimeStamp).FirstOrDefaultAsync(ul => ul.UserId == userId);
         }
 
-        public async Task<IEnumerable<UserLocation>> GetAllLatestUserLocations()
+        public async Task<IEnumerable<UserLocation>> GetAllCurrentUserLocations()
         {
             return await _dbSet.GroupBy(ul => ul.UserId).Select(group => group.OrderByDescending(ul => ul.TimeStamp).First()).ToListAsync();
         }

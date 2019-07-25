@@ -30,9 +30,9 @@ namespace AirboxInterview.LocationService.Services
             });
         }
 
-        public async Task<UserLocationDto> GetLatestUserLocationByUserId(int userId)
+        public async Task<UserLocationDto> GetCurrentUserLocationByUserId(int userId)
         {
-            var userLocation = await _userLocationRepository.GetLatestUserLocationByUserId(userId);
+            var userLocation = await _userLocationRepository.GetCurrentUserLocationByUserId(userId);
 
             if (userLocation == null)
                 return null;
@@ -46,9 +46,9 @@ namespace AirboxInterview.LocationService.Services
             };
         }
 
-        public async Task<IEnumerable<UserLocationDto>> GetAllLatestUserLocations()
+        public async Task<IEnumerable<UserLocationDto>> GetAllCurrentUserLocations()
         {
-            var userLocations = await _userLocationRepository.GetAllLatestUserLocations();
+            var userLocations = await _userLocationRepository.GetAllCurrentUserLocations();
 
             return userLocations == null ? null : userLocations.Select(ul => new UserLocationDto()
             {

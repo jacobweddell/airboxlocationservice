@@ -18,13 +18,13 @@ namespace AirboxInterview.LocationService.Controllers
             _userLocationService = userLocationService;
         }
 
-        // GET api/userlocation/latest
-        [HttpGet("latest")]
-        public async Task<IActionResult> GetAllLatest()
+        // GET api/userlocation/current
+        [HttpGet("current")]
+        public async Task<IActionResult> GetAllCurrent()
         {
             try
             {
-                var userLocations = (await _userLocationService.GetAllLatestUserLocations()).ToList();
+                var userLocations = (await _userLocationService.GetAllCurrentUserLocations()).ToList();
 
                 if (userLocations == null || userLocations.Count == 0)
                     return Ok($"No locations found");
@@ -38,13 +38,13 @@ namespace AirboxInterview.LocationService.Controllers
            
         }
 
-        // GET api/userlocation/5/latest
-        [HttpGet("latest/{id}")]
-        public async Task<IActionResult> GetLatest(int id)
+        // GET api/userlocation/5/current
+        [HttpGet("current/{id}")]
+        public async Task<IActionResult> GetCurrent(int id)
         {
             try
             {
-                var userLocation = await _userLocationService.GetLatestUserLocationByUserId(id);
+                var userLocation = await _userLocationService.GetCurrentUserLocationByUserId(id);
 
                  if (userLocation == null)
                     return Ok($"No locations for user: {id} found");

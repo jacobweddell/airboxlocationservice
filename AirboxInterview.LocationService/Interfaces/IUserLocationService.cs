@@ -20,13 +20,13 @@ namespace AirboxInterview.LocationService.Interfaces
         /// </summary>
         /// <param name="userId">the id of the user</param>
         /// <returns>A LocationDto representing the location for the user</returns>
-        Task<UserLocationDto> GetLatestUserLocationByUserId(int userId);
+        Task<UserLocationDto> GetCurrentUserLocationByUserId(int userId);
 
         /// <summary>
         /// Gets the latest locations for all users
         /// </summary>
         /// <returns>LocationDtos representing the latest locations for all users</returns>
-        Task<IEnumerable<UserLocationDto>> GetAllLatestUserLocations();
+        Task<IEnumerable<UserLocationDto>> GetAllCurrentUserLocations();
 
         /// <summary>
         /// Gets the user locations that are within the area of the location area given
